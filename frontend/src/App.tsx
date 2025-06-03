@@ -4,24 +4,37 @@ import { Toaster } from "react-hot-toast";
 import MeetingsDashboard from "./Pages/Home";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
+import ProtectedRoute from "./components/ProtectedRoutes";
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <div className="flex flex-col min-h-screen">
-          {/* <ScrollToTop /> */}
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<MeetingsDashboard />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-            </Routes>
-          </main>
+   
+  <AuthProvider>
+      <Router>
+        <div>
           <Toaster />
+          <Routes>
+            {/* Protected route for dashboard */}
+            <Route 
+              path="/" 
+              element={
+                <ProtectedRoute>
+                  <MeetingsDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            
+            {/* Public routes */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            
+            {/* Redirect any unknown routes to home (which will redirect to login if not authenticated) */}
+            {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+          </Routes>
         </div>
-      </AuthProvider>
-    </Router>
+      </Router>
+    </AuthProvider>
+   
   );
 }
 
