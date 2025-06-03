@@ -54,7 +54,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
             },
           };
           const res = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/api/users/me`,
+            `${import.meta.env.VITE_API_BASE_URL}/api/users/me`,
             config
           );
           setUser(res.data);
