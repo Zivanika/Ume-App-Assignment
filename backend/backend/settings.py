@@ -61,7 +61,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     " http://localhost:5173",  # React dev server
     "https://ume-app-assignment.vercel.app",
-    "https://ume-app-assignment-xtm7.vercel.app/"
+    "https://ume-app-assignment-xtm7.vercel.app"
 ]
 
 MIDDLEWARE = [
