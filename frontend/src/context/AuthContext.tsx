@@ -54,13 +54,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
             },
           };
           const res = await axios.get(
-            `${import.meta.env.VITE_API_BASE_URL}/api/users/me`,
+            `${import.meta.env.VITE_API_BASE_URL}/api/api/users/me`,
             config
           );
           setUser(res.data);
           setIsAuthenticated(true);
         } catch (err) {
-          localStorage.removeItem("token");
+          // localStorage.removeItem("token");
           setToken(null);
           setUser(null);
           setIsAuthenticated(false);
@@ -83,7 +83,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       );
 
       const token = res.data.access;
-
+      console.log("token",token);
+      
       localStorage.setItem("token", token);
       setToken(token);
       setIsAuthenticated(true);
@@ -112,6 +113,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     );
 
     const token = res.data.token;
+    console.log("token",token);
+    
     localStorage.setItem("token", token);
     setToken(token);
     setIsAuthenticated(true);
@@ -124,6 +127,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 
 
   const logout = () => {
+    console.log("reaching logout");
+    
     localStorage.removeItem("token");
     setToken(null);
     setUser(null);

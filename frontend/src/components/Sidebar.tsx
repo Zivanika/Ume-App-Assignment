@@ -8,10 +8,7 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("reach");
     logout();
-    console.log("reach2");
-    
     navigate("/login");
   };
   return (

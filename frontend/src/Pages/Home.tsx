@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Plus,
   Edit2,
@@ -21,6 +21,7 @@ import {
   convertDjangoDateToDisplay,
   convertDjangoTimeToDisplay,
 } from "../utils/conversions";
+import AuthContext from "../context/AuthContext";
 
 interface Meeting {
   id: number;
@@ -33,10 +34,8 @@ interface Meeting {
   owner: number; // User ID
   created_at: string; // ISO datetime string
 }
-let token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ5NTExNTAzLCJpYXQiOjE3NDg5MDY3MDMsImp0aSI6ImNiN2ExZDQxODFjYjRlYmU4ZjhmMDA4ZDIxNzcwNDU2IiwidXNlcl9pZCI6Mn0.Rjd3kt347G93D8dY5zxL46xoH1swCWmG1i79wMovMuU";
-
 const MeetingsDashboard = () => {
+  const {token} = useContext(AuthContext);
   const [meetings, setMeetings] = useState<Meeting[]>(initialMeetings);
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +84,8 @@ const MeetingsDashboard = () => {
         date: convertDateToDjangoFormat(meetingData.date),
         start_time: convertTimeToDjangoFormat(meetingData.start_time),
       };
-
+      console.log("token in create",token);
+      
       const response = await apiClient.post("/meetings/", convertedData);
       setMeetings((prev) => [...prev, response.data]);
       return response.data;
