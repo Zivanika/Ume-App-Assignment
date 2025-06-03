@@ -1,4 +1,4 @@
-<h1 align="center">🗓️ Meetings Dashboard</h1>
+<h1 align="center">Ume App Assignment</h1>
 
 <p align="center">
 A sleek and modern web app to manage, track, and schedule all your meetings in one place.
@@ -45,8 +45,8 @@ Follow these steps to run the Next.js project on your local machine:
 1. **Clone the Repository:**
 
    ```sh
-   git clone https://github.com/Zethyst/Meeting-Dashboard.git
-   cd Meeting-Dashboard
+   git clone https://github.com/Zivanika/Ume-App-Assignment.git
+   cd Ume-App-Assignment
    ```
 
 2. **Install Dependencies:**
