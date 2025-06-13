@@ -1,4 +1,4 @@
-<h1 align="center">Ume App Assignment</h1>
+<h1 align="center">Meetings Dashboard</h1>
 
 <p align="center">
 A sleek and modern web app to manage, track, and schedule all your meetings in one place.
